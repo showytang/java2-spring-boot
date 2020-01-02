@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC 
+"-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 
+	1、ORM：对象关系映射
+	2、mybatis：半自动化ORM
+	3、mybatis使用步骤
+		A、加载jar
+		B、创建config文件
+		C、创建实体类
+		D、创建mapper文件
+	
+	4、测试部分：
+		//builder对象
+		SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+		//获取核心配置文件
+		InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
+		//根据配置文件构建mybatis工厂
+		SqlSessionFactory factory = builder.build(is);
+		//工厂创建session对象
+		SqlSession session = factory.openSession();
+		
+		session.commit();//session.rollBack();
+		session.close();
+		
+		jdbcUrl:jdbc:mysql://localhost:3306/myschool?useUnicode=true&amp;characterEncoding=utf-8
+ -->
+    
+<configuration>
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+	</plugins>
+</configuration>

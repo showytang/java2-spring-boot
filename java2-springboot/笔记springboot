@@ -1,0 +1,66 @@
+SpringBoot所具备的特征有：
+（1）可以创建独立的Spring应用程序，并且基于其Maven或Gradle插件，可以创建可执行的JARs和WARs；
+（2）内嵌Tomcat或Jetty等Servlet容器；
+（3）提供自动配置的“starter”项目对象模型（POMS）以简化Maven配置；
+（4）尽可能自动配置Spring容器；
+（5）提供准备好的特性，如指标、健康检查和外部化配置；
+（6）绝对没有代码生成，不需要XML配置。
+
+基本配置需要引入的组建：
+1）devtools
+2）mybatis
+3）thymeleaf
+4）mysql driver
+5）spring web
+
+配置springboot数据源连接内容：
+spring.datasource.url=jdbc:mysql://localhost:3306/myschool?useUnicode=true&characterEncoding=utf-8&allowMutilQueries=true&serverTimezone=UTC
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.password=root
+spring.datasource.username=root
+
+#加载mybatisconfig配置文件 classpath:代表编译后的根路径
+mybatis.config-location=classpath:mybatis-config.xml
+#加载mapper配置文件，因为默认是加载mapper接口同级目录配置文件
+mybatis.mapper-locations=classpath:mapper/*.xml
+#在启动类中定义扫描加载mapper 接口包路径
+@MapperScan("com.accp.mapper")
+
+在html中定义头部：xmlns:th="http://www.thymeleaf.org"
+
+循环：
+th:each="item,index : ${stus.list}"
+
+路径定义：
+th:src="@{/路径地址}"
+参数处理；：
+th:href="@{/student/delete}+'?id='+${item.id}+'&name='+${item.name}"
+th:href="@{/student/delete(id=${item.id},...)}"
+
+js路径处理：
+var url = "[[@{/student/find}]]";
+
+
+获取数据：${}
+
+
+
+第二次课：
+@Configuration：表示为配置类
+WebMvcConfigurationSupport：mvc配置类
+	注意：继承该类后会覆盖原有的静态资源配置，必须重新配置
+	重写addResourceHandlers配置静态资源目录
+	重写addCorsMappings：配置跨域
+	重写addInterceptors：添加拦截器
+
+
+Springboot跨域后在前台ajax请求中增加：
+		xhrFields: {
+			withCredentials: true
+		}
+		
+将数据保存在浏览器的session存储对象中.对象转型成字符串
+sessionStorage.setItem("user",JSON.stringify(response.user));
+
+
+

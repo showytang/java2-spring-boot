@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	查询学生数据：
+	<table>
+		<tr>
+			<td>编号</td>
+			<td>姓名</td>
+			<td>年龄</td>
+			<td>操作</td>
+		</tr>
+		<tr th:each="item : ${stus.list}">
+			<td th:text="${item.id}"></td>
+			<td th:text="${item.name}"></td>
+			<td th:text="${item.age}"></td>
+			<td>
+				<a th:href="@{/student/delete}+'?id='+${item.id}+'&name='+${item.name}">删除</a>
+			</td>
+		</tr>
+	</table>
+	<script type="text/javascript" th:src="@{/js/jquery-1.12.4.js}"></script>
+	<script type="text/javascript">
+		$(function(){
+			var url = "/a/student/find";
+		})
+	</script>
+</body>
+</html>
